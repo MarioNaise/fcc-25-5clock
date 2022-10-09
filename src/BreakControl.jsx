@@ -1,10 +1,11 @@
 export default function BreakControl(props) {
   return (<div>
-    <button>
+    <label id="break-label">Break Length</label>
+    <button onClick={props.decreaseBreakTime}>
       less
     </button>
     <p>{props.breakTime}</p>
-    <button>
+    <button onClick={props.increaseBreakTime}>
       more
     </button>
   </div>
