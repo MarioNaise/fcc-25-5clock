@@ -4,7 +4,7 @@ export default function SessionControl(props) {
     <button id="session-decrement" onClick={props.decreaseSessionTime}>
       less
     </button>
-    <p id="session-length">{props.sessionTime}</p>
+    <p id="session-length">{props.sessionTime / 60}</p>
     <button id="session-increment" onClick={props.increaseSessionTime}>
       more
     </button>

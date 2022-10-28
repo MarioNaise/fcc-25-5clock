@@ -34,14 +34,14 @@ export default class App extends React.Component {
   decreaseSessionTime() {
     if (this.state.sessionTime > 0) {
       this.setState({
-        sessionTime: this.state.sessionTime - 1
+        sessionTime: this.state.sessionTime - 60
       })
     }
   }
 
   increaseSessionTime() {
     this.setState({
-      sessionTime: this.state.sessionTime + 1
+      sessionTime: this.state.sessionTime + 60
     })
   }
 
