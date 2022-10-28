@@ -10,8 +10,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       breakTime: 5,
-      sessionTime: 25,
-      sessionSeconds: 0
+      sessionTime: 1500
     }
     this.decreaseBreakTime = this.decreaseBreakTime.bind(this)
     this.increaseBreakTime = this.increaseBreakTime.bind(this)
