@@ -4,7 +4,7 @@ export default function BreakControl(props) {
     <button id="break-decrement" onClick={props.decreaseBreakTime}>
       less
     </button>
-    <p id="break-length">{props.breakTime}</p>
+    <p id="break-length">{props.breakTimeDisplay}</p>
     <button id="break-increment" onClick={props.increaseBreakTime}>
       more
     </button>
