@@ -11,7 +11,7 @@ export default class App extends React.Component {
     this.state = {
       breakTime: 5,
       sessionTime: 1500,
-      sessionTimeDisplay: 1500,
+      sessionTimeDisplay: 25,
       counting: false
     }
     this.decreaseBreakTime = this.decreaseBreakTime.bind(this)
@@ -37,26 +37,28 @@ export default class App extends React.Component {
   decreaseSessionTime() {
     if (this.state.sessionTime > 0) {
       this.setState({
-        sessionTime: this.state.sessionTime - 60,
-        sessionTimeDisplay: this.state.sessionTimeDisplay - 60
+        sessionTime: (this.state.sessionTimeDisplay - 1) * 60,
+        sessionTimeDisplay: this.state.sessionTimeDisplay - 1
       })
     }
   }
 
   increaseSessionTime() {
     this.setState({
-      sessionTime: this.state.sessionTime + 60,
-      sessionTimeDisplay: this.sessionTimeDisplay.sessionTime + 60
+      sessionTime: (this.state.sessionTimeDisplay + 1) * 60,
+      sessionTimeDisplay: this.state.sessionTimeDisplay + 1
     })
   }
 
   handleStartStop(){
-    if(!this.state.counting){
+    if(!this.state.counting && this.state.sessionTime > 0){
     this.setState({
       sessionInterval: setInterval(()=>{
-      this.setState({
+      if(this.state.sessionTime > 0){
+        this.setState({
       sessionTime: this.state.sessionTime - 1
     })
+      }
     },1000),
       counting: true
     })
@@ -73,7 +75,7 @@ export default class App extends React.Component {
       <main>
         <h1>25 + 5 Clock</h1>
         <BreakControl decreaseBreakTime={this.decreaseBreakTime} increaseBreakTime={this.increaseBreakTime} breakTime={this.state.breakTime} />
-        <SessionControl decreaseSessionTime={this.decreaseSessionTime} increaseSessionTime={this.increaseSessionTime} sessionTime={this.state.sessionTimeDisplay} />
+        <SessionControl decreaseSessionTime={this.decreaseSessionTime} increaseSessionTime={this.increaseSessionTime} sessionTimeDisplay={this.state.sessionTimeDisplay} />
         <Session sessionTime={this.state.sessionTime} sessionSeconds={this.state.sessionSeconds} />
         <Controls handleStartStop={this.handleStartStop} />
       </main>
