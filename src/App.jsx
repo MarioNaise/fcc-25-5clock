@@ -31,10 +31,13 @@ export default class App extends React.Component {
   }
 
   increaseBreakTime() {
-    this.setState({
+    if(this.state.breakTimeDisplay < 60){
+      this.setState({
       breakTimeDisplay: this.state.breakTimeDisplay + 1
-    })
+      })
+    }
   }
+    
 
   decreaseSessionTime() {
     if (this.state.sessionTimeDisplay > 1) {
@@ -46,10 +49,12 @@ export default class App extends React.Component {
   }
 
   increaseSessionTime() {
-    this.setState({
+    if(this.state.sessionTimeDisplay < 60){
+      this.setState({
       sessionTime: (this.state.sessionTimeDisplay + 1) * 60,
       sessionTimeDisplay: this.state.sessionTimeDisplay + 1
-    })
+    })}
+    
   }
 
   handleStartStop(){
@@ -88,7 +93,8 @@ export default class App extends React.Component {
       breakTimeDisplay: 5,
       sessionTime: 1500,
       sessionTimeDisplay: 25,
-      counting: false
+      counting: false,
+      timerLabel: "Session"
     });
   }
 
