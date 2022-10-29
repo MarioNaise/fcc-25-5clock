@@ -63,18 +63,20 @@ export default class App extends React.Component {
       sessionInterval: setInterval(()=>{
       if(this.state.sessionTime > 0){
         this.setState({
-      sessionTime: this.state.sessionTime - 1
+        sessionTime: this.state.sessionTime - 1
     })
       } else if(this.state.timerLabel == "Session"){
         this.setState({
           sessionTime: this.state.breakTimeDisplay * 60,
           timerLabel: "Break"
-        })
+        });
+        this.playSound();
       } else if(this.state.timerLabel == "Break"){
         this.setState({
           sessionTime: (this.state.sessionTimeDisplay) * 60,
           timerLabel: "Session"
         })
+        this.playSound();
       }
     },1000),
       counting: true
@@ -98,6 +100,12 @@ export default class App extends React.Component {
     });
   }
 
+  playSound(){
+    const sound = document.getElementById("beep");
+    sound.play();
+    sound.currentTime = 0;
+  }
+
   render() {
     return (
       <main>
@@ -106,6 +114,7 @@ export default class App extends React.Component {
         <SessionControl decreaseSessionTime={this.decreaseSessionTime} increaseSessionTime={this.increaseSessionTime} sessionTimeDisplay={this.state.sessionTimeDisplay} />
         <Session timerLabel={this.state.timerLabel} sessionTime={this.state.sessionTime} sessionSeconds={this.state.sessionSeconds} />
         <Controls handleStartStop={this.handleStartStop} handleReset={this.handleReset} />
+        <audio id="beep" src={"//raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"} />
       </main>
     )
   }
