@@ -1,6 +1,6 @@
-export default function Controls() {
+export default function Controls(props) {
   return (<div>
-    <button id="start_stop">Start/Stop</button>
+    <button onClick={props.handleStartStop} id="start_stop">Start/Stop</button>
     <button id="reset">Reset</button>
   </div>
   );

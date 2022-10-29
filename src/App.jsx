@@ -16,6 +16,7 @@ export default class App extends React.Component {
     this.increaseBreakTime = this.increaseBreakTime.bind(this)
     this.decreaseSessionTime = this.decreaseSessionTime.bind(this)
     this.increaseSessionTime = this.increaseSessionTime.bind(this)
+    this.handleStartStop = this.handleStartStop.bind(this)
   }
 
   decreaseBreakTime() {
@@ -45,6 +46,9 @@ export default class App extends React.Component {
     })
   }
 
+  handleStartStop(){
+  }
+
   render() {
     return (
       <main>
@@ -52,7 +56,7 @@ export default class App extends React.Component {
         <BreakControl decreaseBreakTime={this.decreaseBreakTime} increaseBreakTime={this.increaseBreakTime} breakTime={this.state.breakTime} />
         <SessionControl decreaseSessionTime={this.decreaseSessionTime} increaseSessionTime={this.increaseSessionTime} sessionTime={this.state.sessionTime} />
         <Session sessionTime={this.state.sessionTime} sessionSeconds={this.state.sessionSeconds} />
-        <Controls />
+        <Controls handleStartStop={this.handleStartStop} />
       </main>
     )
   }
