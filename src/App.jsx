@@ -98,6 +98,9 @@ export default class App extends React.Component {
       counting: false,
       timerLabel: "Session"
     });
+    const sound = document.getElementById("beep");
+    sound.currentTime = 0;
+    sound.pause();
   }
 
   playSound(){
