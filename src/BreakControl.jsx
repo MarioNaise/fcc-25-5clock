@@ -1,5 +1,5 @@
 export default function BreakControl(props) {
-  return (<div>
+  return (<div className="container flex">
     <label id="break-label">Break Length</label>
     <button id="break-decrement" onClick={props.decreaseBreakTime}>
       less

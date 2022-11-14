@@ -1,5 +1,5 @@
 export default function SessionControl(props) {
-  return (<div>
+  return (<div className="container flex">
     <label id="session-label">Session Length</label>
     <button id="session-decrement" onClick={props.decreaseSessionTime}>
       less
