@@ -8,7 +8,7 @@
 body{
   display: flex;
   justify-content: center;
-  background-color: #7894bc;
+  background-color: #76bc88;
 }
 
 h1{
@@ -23,7 +23,7 @@ button{
   font-size: 1.5rem;
   padding: 0.5rem;
   margin: 1rem;
-  background-color: #7894bc;
+  background-color: #76bc88;
   border-radius: 1rem;
 }
 
@@ -47,5 +47,5 @@ label{
   margin: 2rem;
   border: 1px solid black;
   border-radius: 1rem;
-  background-color: #42536c;
+  background-color: #4d8056;
 }
