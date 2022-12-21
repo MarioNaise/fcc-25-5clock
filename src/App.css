@@ -8,27 +8,24 @@
 body{
   display: flex;
   justify-content: center;
-  background-color: #76bc88;
+  background-color: #76a7bc;
 }
 
 h1{
-  font-size: 3rem;
+  margin-top: 2rem;
+  font-size: 2rem;
 }
 
 p{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 button{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   padding: 0.5rem;
   margin: 1rem;
-  background-color: #76bc88;
+  background-color: #76a7bc;
   border-radius: 1rem;
-}
-
-button:active{
-  color: black;
 }
 
 label{
@@ -47,5 +44,5 @@ label{
   margin: 2rem;
   border: 1px solid black;
   border-radius: 1rem;
-  background-color: #4d8056;
+  background-color: #3f7288;
 }
