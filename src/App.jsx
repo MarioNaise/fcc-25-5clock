@@ -16,37 +16,47 @@ export default function App() {
   });
 
   const decreaseBreakTime = () => {
-    if (breakTimeDisplay > 1) setBreakTimeDisplay((prev) => prev - 1);
+    if (breakTimeDisplay > 1) {
+      setSessionData((prev) =>
+        handleSessionState(prev, breakTimeDisplay, "Break", false)
+      );
+      setBreakTimeDisplay((prev) => prev - 1);
+    }
   };
 
   const increaseBreakTime = () => {
     if (breakTimeDisplay < 60) {
+      setSessionData((prev) =>
+        handleSessionState(prev, breakTimeDisplay, "Break")
+      );
       setBreakTimeDisplay((prev) => prev + 1);
     }
   };
 
   const decreaseSessionTime = () => {
     if (sessionTimeDisplay > 1) {
-      setSessionData((prev) => {
-        return {
-          label: prev.label,
-          sessionTime: (sessionTimeDisplay - 1) * 60,
-        };
-      });
+      setSessionData((prev) =>
+        handleSessionState(prev, sessionTimeDisplay, "Session", false)
+      );
       setSessionTimeDisplay((prev) => prev - 1);
     }
   };
 
   const increaseSessionTime = () => {
     if (sessionTimeDisplay < 60) {
-      setSessionData((prev) => {
-        return {
-          label: prev.label,
-          sessionTime: (sessionTimeDisplay + 1) * 60,
-        };
-      });
+      setSessionData((prev) =>
+        handleSessionState(prev, sessionTimeDisplay, "Session")
+      );
       setSessionTimeDisplay((prev) => prev + 1);
     }
+  };
+
+  const handleSessionState = (prev, time, label, increase = true) => {
+    const newState = {
+      label: prev.label,
+      sessionTime: increase ? (time + 1) * 60 : (time - 1) * 60,
+    };
+    return prev.label === label ? newState : prev;
   };
 
   const handleReset = () => {
