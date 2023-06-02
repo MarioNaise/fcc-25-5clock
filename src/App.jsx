@@ -111,21 +111,27 @@ export default function App() {
   return (
     <main>
       <h1>25 + 5 Clock</h1>
-      <BreakControl
-        decreaseBreakTime={decreaseBreakTime}
-        increaseBreakTime={increaseBreakTime}
-        breakTimeDisplay={breakTimeDisplay}
-      />
-      <SessionControl
-        decreaseSessionTime={decreaseSessionTime}
-        increaseSessionTime={increaseSessionTime}
-        sessionTimeDisplay={sessionTimeDisplay}
-      />
       <Session
         timerLabel={sessionData.label}
         sessionTime={sessionData.sessionTime}
       />
-      <Controls handleStartStop={handleStartStop} handleReset={handleReset} />
+      <div className="grid">
+        <SessionControl
+          decreaseSessionTime={decreaseSessionTime}
+          increaseSessionTime={increaseSessionTime}
+          sessionTimeDisplay={sessionTimeDisplay}
+        />
+        <BreakControl
+          decreaseBreakTime={decreaseBreakTime}
+          increaseBreakTime={increaseBreakTime}
+          breakTimeDisplay={breakTimeDisplay}
+        />
+      </div>
+      <Controls
+        handleStartStop={handleStartStop}
+        handleReset={handleReset}
+        counting={counting}
+      />
       <audio
         id="beep"
         src={
