@@ -67,39 +67,39 @@ export default function App() {
   const handleStartStop = () => {
     if (!counting && sessionData.sessionTime > 0) {
       setCounting(true);
-      setCounter(
-        setInterval(() => {
-          setSessionData((prev) => {
-            if (prev.sessionTime > 0) {
-              return {
-                label: prev.label,
-                sessionTime: prev.sessionTime - 1,
-              };
-            }
-            if (prev.sessionTime === 0) {
-              playSound();
-              if (prev.label === "Session") {
-                return {
-                  label: "Break",
-                  sessionTime: breakTimeDisplay * 60,
-                };
-              }
-              if (prev.label === "Break") {
-                return {
-                  label: "Session",
-                  sessionTime: sessionTimeDisplay * 60,
-                };
-              }
-            } else {
-              return prev;
-            }
-          });
-        }, 1000)
-      );
+      setCounter(setInterval(handleInterval, 1000));
     } else {
       clearInterval(counter);
       setCounting(false);
     }
+  };
+
+  const handleInterval = () => {
+    setSessionData((prev) => {
+      if (prev.sessionTime > 0) {
+        return {
+          label: prev.label,
+          sessionTime: prev.sessionTime - 1,
+        };
+      }
+      if (prev.sessionTime === 0) {
+        playSound();
+        if (prev.label === "Session") {
+          return {
+            label: "Break",
+            sessionTime: breakTimeDisplay * 60,
+          };
+        }
+        if (prev.label === "Break") {
+          return {
+            label: "Session",
+            sessionTime: sessionTimeDisplay * 60,
+          };
+        }
+      } else {
+        return prev;
+      }
+    });
   };
 
   const playSound = () => {
